@@ -1,0 +1,23 @@
+(import '(javax.swing JFrame JLabel JTextField JButton)
+'(java.awt.event ActionListener)
+'(java.awt GridLayout))
+((let [frame (JFrame. "String Capitilizer!")
+input-text (JTextField.)
+inputNo-label (JLabel. "← Type in a string")
+convert-button (JButton. "CONVERT")
+result-label (JLabel. "converted text will appear here")]
+(. convert-button
+(addActionListener
+(proxy [ActionListener] [ ]
+(actionPerformed [evt]
+(let [i (. input-text (getText))]
+(. result-label
+(setText (str (clojure.string/upper-case i) " — totally converted!!"))))))))
+(doto frame
+(.setLayout (new GridLayout 2 2 5 5))
+(.add input-text)
+(.add inputNo-label)
+(.add convert-button)
+(.add result-label)
+(.setSize 900 100)
+(.setVisible true))))
