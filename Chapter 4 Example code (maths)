@@ -1,0 +1,23 @@
+(import '(javax.swing JFrame JLabel JTextField JButton)
+'(java.awt.event ActionListener)
+'(java.awt GridLayout))
+((let [frame (JFrame. "Square Root Calculator")
+input-text (JTextField.)
+inputNo-label (JLabel. "Input Number")
+square-button (JButton. "Find Sqr Root")
+result-label (JLabel. "result")]
+(. square-button
+(addActionListener
+(proxy [ActionListener] [ ]
+(actionPerformed [evt]
+(let [i (Double/parseDouble (. input-text (getText)))]
+(. result-label
+(setText (str (Math/sqrt i) " is the square root"))))))))
+(doto frame
+(.setLayout (new GridLayout 2 2 3 3))
+(.add input-text)
+(.add inputNo-label)
+(.add square-button)
+(.add result-label)
+(.setSize 400 100)
+(.setVisible true))))
