@@ -1,0 +1,9 @@
+(def Library (atom
+{"The Caves of Steel" { :ISBN "0–553–29340–0"
+                        :Title "The Caves of Steel"
+                        :Author "Isaac Asimov"
+                        :Year "1954"}
+"After Yesterdays Crash" { :ISBN "0–14–024085–3"
+                           :Title "After Yesterdays Crash"
+                           :Author "William Gibson"}}
+))
