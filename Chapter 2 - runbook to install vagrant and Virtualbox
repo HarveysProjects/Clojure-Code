@@ -1,0 +1,24 @@
+:: Anything between two colons '::' is a comment ::
+
+::Vagrant Runbook to install vagrant, virtualbox (and chocolaty)::
+
+powershell
+
+Start-Process powershell -Verb runAs
+
+::Powershell input::
+
+ECHO Y | powershell Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+
+cinst virtualbox vagrant cyg-get
+
+::Restart the Computer::
+
+Restart-Computer
+
+::Check virtualbox and vagrant are installed::
+
+echo|set /p= virtualbox & "C:\Program Files\Oracle\VirtualBox\VBoxManage" --version && vagrant -v
