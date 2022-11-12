@@ -1,0 +1,7 @@
+(import ‘(javax.swing JFrame JLabel))
+(let [f (JFrame. “Hello World”)
+label-text (JLabel. “ Hello World Again!”)]
+(doto f
+(.add label-text)
+(.setSize 400 200)
+(.setVisible true)))
